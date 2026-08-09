@@ -17,7 +17,8 @@ local function get_pos( text, char )
     local pos = {}
     if text:find( char ) then
         local tmp = text
-        for i = 1, utf8.len( tmp ) do
+        local i = 1
+        while i <= utf8.len( tmp ) do
             local first_char = tmp:sub( 1, utf8.offset( tmp, 2 ) - 1 )
             if first_char == char then pos[i] = true end
             tmp = tmp:gsub( '^' .. first_char, '' )
